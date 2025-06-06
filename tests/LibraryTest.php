@@ -36,5 +36,16 @@ class LibraryTest extends TestCase
 
         $this->assertEquals("hola x1", $response);
     }
+    /**
+     * @test
+     *
+     */
+    public function receivesSameBookTwiceReturnsBook()
+    {
+        $response =  $this->library->operations("prestar: hola 2");
+
+        $this->assertEquals("hola x2", $response);
+    }
+
 
 }
