@@ -32,6 +32,10 @@ class Library
         if(str_contains($books,"devolver:")) {
             $quantityBooks = explode(" ",$books);
 
+            if(!isset($quantityBooks[1])) {
+                return $this->printLoanBooks();
+            }
+
             if(!array_key_exists($quantityBooks[1], $this->listOfLoanBooks)) {
                 return "El libro indicado no está en préstamo";
             }
