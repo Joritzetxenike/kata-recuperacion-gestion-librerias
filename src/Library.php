@@ -14,25 +14,12 @@ class Library
                 return $this->printLoanBooks();
             }
             if(array_key_exists($quantityBooks[1], $this->listOfLoanBooks)) {
-
-                if (isset($quantityBooks[2])) {
-                    $this->listOfLoanBooks[$quantityBooks[1]] += intval($quantityBooks[2]);
-                    return $this->printLoanBooks();
-                }
-
-                $this->listOfLoanBooks[$quantityBooks[1]] += 1;
+                isset($quantityBooks[2]) ? $this->listOfLoanBooks[$quantityBooks[1]] += intval($quantityBooks[2]) :  $this->listOfLoanBooks[$quantityBooks[1]] += 1;
                 return $this->printLoanBooks();
 
             }
-            if (isset($quantityBooks[2])) {
-                $this->listOfLoanBooks[$quantityBooks[1]] = intval($quantityBooks[2]);
-                return $this->printLoanBooks();
-            }
-
-            $this->listOfLoanBooks[$quantityBooks[1]] = 1;
+            isset($quantityBooks[2]) ? $this->listOfLoanBooks[$quantityBooks[1]] = intval($quantityBooks[2]) :  $this->listOfLoanBooks[$quantityBooks[1]] = 1;
             return $this->printLoanBooks();
-
-
         }
 
     }
