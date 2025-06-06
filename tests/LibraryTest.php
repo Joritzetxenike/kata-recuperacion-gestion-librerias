@@ -94,7 +94,7 @@ class LibraryTest extends TestCase
      * @test
      *
      */
-    public function receivesNoBookToReturnErrorMessageReturned()
+    public function receivesBookToReturnWhenItIsNotLoanedErrorMessageReturned()
     {
         $response =  $this->library->operations("devolver: hola");
 
