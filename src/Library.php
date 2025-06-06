@@ -59,7 +59,6 @@ class Library
         if(array_key_exists($title, $this->listOfLoanBooks)) {
             isset($bookList[2]) ? $this->listOfLoanBooks[$title] += intval($bookList[2]) :  $this->listOfLoanBooks[$title] += 1;
             return $this->printLoanBooks();
-
         }
 
         isset($bookList[2]) ? $this->listOfLoanBooks[$title] = intval($bookList[2]) :  $this->listOfLoanBooks[$title] = 1;
@@ -79,10 +78,12 @@ class Library
         if(!array_key_exists($title, $this->listOfLoanBooks)) {
             return "El libro indicado no está en préstamo";
         }
+
         if($this->listOfLoanBooks[$title] > 1) {
             $this->listOfLoanBooks[$bookList[1]] -= 1;
             return $this->printLoanBooks();
         }
+
         unset($this->listOfLoanBooks[$title]);
         return $this->printLoanBooks();
     }
