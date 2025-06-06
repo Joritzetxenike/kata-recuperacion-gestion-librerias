@@ -116,4 +116,14 @@ class LibraryTest extends TestCase
     {
         $this->assertEquals("hola x1", $this->library->operations("prestar: Hola"));
     }
+    /**
+     * @test
+     *
+     */
+    public function receivesDifferentBooksToLoanReturnsListOfLoanedBooksInAlphabeticalOrder()
+    {
+        $this->library->operations("prestar paco 2");
+
+        $this->assertEquals("hola x1, paco x2", $this->library->operations("prestar hola"));
+    }
 }
