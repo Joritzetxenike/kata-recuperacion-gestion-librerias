@@ -90,6 +90,16 @@ class LibraryTest extends TestCase
 
         $this->assertEquals("", $response);
     }
+    /**
+     * @test
+     *
+     */
+    public function receivesNoBookToReturnErrorMessageReturned()
+    {
+        $response =  $this->library->operations("devolver: hola");
+
+        $this->assertEquals("El libro indicado no está en préstamo", $response);
+    }
 
 
 
