@@ -5,45 +5,45 @@ namespace Deg540\DockerPHPBoilerplate;
 class Library
 {
     private array $listOfLoanBooks = [];
-    public function operations(string $books): string
+    public function operations(string $bookListWithOperation): string
     {
-        if(str_contains($books,"prestar:")) {
-            $quantityBooks = explode(" ",$books);
+        if(str_contains($bookListWithOperation,"prestar")) {
+            $bookList = explode(" ",$bookListWithOperation);
 
-            if(!isset($quantityBooks[1])) {
+            if(!isset($bookList[1])) {
                 return $this->printLoanBooks();
             }
 
-            if(array_key_exists($quantityBooks[1], $this->listOfLoanBooks)) {
-                isset($quantityBooks[2]) ? $this->listOfLoanBooks[$quantityBooks[1]] += intval($quantityBooks[2]) :  $this->listOfLoanBooks[$quantityBooks[1]] += 1;
+            if(array_key_exists($bookList[1], $this->listOfLoanBooks)) {
+                isset($bookList[2]) ? $this->listOfLoanBooks[$bookList[1]] += intval($bookList[2]) :  $this->listOfLoanBooks[$bookList[1]] += 1;
                 return $this->printLoanBooks();
 
             }
 
-            isset($quantityBooks[2]) ? $this->listOfLoanBooks[$quantityBooks[1]] = intval($quantityBooks[2]) :  $this->listOfLoanBooks[$quantityBooks[1]] = 1;
+            isset($bookList[2]) ? $this->listOfLoanBooks[$bookList[1]] = intval($bookList[2]) :  $this->listOfLoanBooks[$bookList[1]] = 1;
             return $this->printLoanBooks();
         }
 
-        if (str_contains($books,"limpiar")) {
+        if (str_contains($bookListWithOperation,"limpiar")) {
             $this->listOfLoanBooks = [];
             return $this->printLoanBooks();
         }
 
-        if(str_contains($books,"devolver:")) {
-            $quantityBooks = explode(" ",$books);
+        if(str_contains($bookListWithOperation,"devolver")) {
+            $bookList = explode(" ",$bookListWithOperation);
 
-            if(!isset($quantityBooks[1])) {
+            if(!isset($bookList[1])) {
                 return $this->printLoanBooks();
             }
 
-            if(!array_key_exists($quantityBooks[1], $this->listOfLoanBooks)) {
+            if(!array_key_exists($bookList[1], $this->listOfLoanBooks)) {
                 return "El libro indicado no está en préstamo";
             }
-            if($this->listOfLoanBooks[$quantityBooks[1]] > 1) {
-                $this->listOfLoanBooks[$quantityBooks[1]] -= 1;
+            if($this->listOfLoanBooks[$bookList[1]] > 1) {
+                $this->listOfLoanBooks[$bookList[1]] -= 1;
                 return $this->printLoanBooks();
             }
-            unset($this->listOfLoanBooks[$quantityBooks[1]]);
+            unset($this->listOfLoanBooks[$bookList[1]]);
             return $this->printLoanBooks();
         }
         return $this->printLoanBooks();
