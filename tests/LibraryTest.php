@@ -19,7 +19,7 @@ class LibraryTest extends TestCase
      *
      */
 
-    public function receivesZeroBookReturnsEmptyString()
+    public function receivesZeroBookToLoanReturnsEmptyString()
     {
         $response =  $this->library->operations("prestar:");
 
@@ -30,7 +30,7 @@ class LibraryTest extends TestCase
      * @test
      *
      */
-    public function receivesOneBookReturnsBook()
+    public function receivesOneBookToLoanReturnsBook()
     {
         $response =  $this->library->operations("prestar: hola");
 
@@ -40,7 +40,7 @@ class LibraryTest extends TestCase
      * @test
      *
      */
-    public function receivesSameBookTwiceReturnsBook()
+    public function receivesSameBookTwiceToLoanReturnsBook()
     {
         $response =  $this->library->operations("prestar: hola 2");
 
@@ -50,7 +50,7 @@ class LibraryTest extends TestCase
      * @test
      *
      */
-    public function receivesSameBookTwiceInDifferentOperationsReturnsBook()
+    public function receivesSameBookTwiceInDifferentOperationsToLoanReturnsBook()
     {
         $response =  $this->library->operations("prestar: hola 2");
         $response =  $this->library->operations("prestar: hola");
@@ -61,7 +61,7 @@ class LibraryTest extends TestCase
      * @test
      *
      */
-    public function receivesDiffentBookToLoanReturnsBooks()
+    public function receivesDifferentBookToLoanReturnsBooks()
     {
         $response =  $this->library->operations("prestar: hola 2");
         $response =  $this->library->operations("prestar: paco");

@@ -20,10 +20,9 @@ class Library
                     return $this->printLoanBooks();
                 }
 
-                elseif (isset($quantityBooks[1])) {
-                    $this->listOfLoanBooks[$quantityBooks[1]] += 1;
-                    return $this->printLoanBooks();
-                }
+                $this->listOfLoanBooks[$quantityBooks[1]] += 1;
+                return $this->printLoanBooks();
+
             }
             if (isset($quantityBooks[2])) {
                 $this->listOfLoanBooks[$quantityBooks[1]] = intval($quantityBooks[2]);
