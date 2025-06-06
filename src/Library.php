@@ -35,7 +35,10 @@ class Library
             if(!array_key_exists($quantityBooks[1], $this->listOfLoanBooks)) {
                 return "El libro indicado no está en préstamo";
             }
-
+            if($this->listOfLoanBooks[$quantityBooks[1]] > 1) {
+                $this->listOfLoanBooks[$quantityBooks[1]] -= 1;
+                return $this->printLoanBooks();
+            }
             unset($this->listOfLoanBooks[$quantityBooks[1]]);
             return $this->printLoanBooks();
         }

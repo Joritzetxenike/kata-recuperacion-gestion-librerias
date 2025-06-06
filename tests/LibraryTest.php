@@ -100,4 +100,15 @@ class LibraryTest extends TestCase
 
         $this->assertEquals("El libro indicado no está en préstamo", $response);
     }
+    /**
+     * @test
+     *
+     */
+    public function receivesLoanedOneBookToReturnItWhenTwoBooksAreLoaned()
+    {
+        $response =  $this->library->operations("prestar: hola 2");
+        $response =  $this->library->operations("devolver: hola");
+
+        $this->assertEquals("hola x1", $response);
+    }
 }
