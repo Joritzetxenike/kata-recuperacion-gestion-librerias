@@ -2,10 +2,10 @@
 
 namespace Deg540\DockerPHPBoilerplate\Test;
 
-use Deg540\DockerPHPBoilerplate\NombreClase;
+use Deg540\DockerPHPBoilerplate\Library;
 use PHPUnit\Framework\TestCase;
 
-class NombreClaseTest extends TestCase
+class LibraryTest extends TestCase
 {
     /**
      * @test

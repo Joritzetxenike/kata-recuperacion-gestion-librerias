@@ -2,9 +2,7 @@
 
 namespace Deg540\DockerPHPBoilerplate;
 
-use PHPUnit\Framework\TestCase;
-
-class NombreClase
+class Library
 {
 
     public function unoEsUno()
