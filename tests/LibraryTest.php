@@ -100,8 +100,4 @@ class LibraryTest extends TestCase
 
         $this->assertEquals("El libro indicado no está en préstamo", $response);
     }
-
-
-
-
 }

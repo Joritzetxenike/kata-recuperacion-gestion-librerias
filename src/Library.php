@@ -8,16 +8,18 @@ class Library
     public function operations(string $books): string
     {
         if(str_contains($books,"prestar:")) {
-            $quantityBooks = explode(" ",$books);//prestar:__libreo__cantidad
+            $quantityBooks = explode(" ",$books);
 
             if(!isset($quantityBooks[1])) {
                 return $this->printLoanBooks();
             }
+
             if(array_key_exists($quantityBooks[1], $this->listOfLoanBooks)) {
                 isset($quantityBooks[2]) ? $this->listOfLoanBooks[$quantityBooks[1]] += intval($quantityBooks[2]) :  $this->listOfLoanBooks[$quantityBooks[1]] += 1;
                 return $this->printLoanBooks();
 
             }
+
             isset($quantityBooks[2]) ? $this->listOfLoanBooks[$quantityBooks[1]] = intval($quantityBooks[2]) :  $this->listOfLoanBooks[$quantityBooks[1]] = 1;
             return $this->printLoanBooks();
         }
@@ -26,12 +28,14 @@ class Library
             $this->listOfLoanBooks = [];
             return $this->printLoanBooks();
         }
+
         if(str_contains($books,"devolver:")) {
             $quantityBooks = explode(" ",$books);
 
             if(!array_key_exists($quantityBooks[1], $this->listOfLoanBooks)) {
                 return "El libro indicado no está en préstamo";
             }
+
             unset($this->listOfLoanBooks[$quantityBooks[1]]);
             return $this->printLoanBooks();
         }
