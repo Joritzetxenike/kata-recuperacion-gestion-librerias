@@ -7,19 +7,20 @@ class Library
     private array $listOfLoanBooks = [];
     public function operations(string $books): string
     {
-        $listOfBooks = explode("prestar: ", $books);
+        if(str_contains($books,"prestar:")) {
+            $quantityBooks = explode(" ",$books);//prestar:__libreo__cantidad
 
-        if (isset($listOfBooks[1])) {
-            $quantityBooks = explode(" ", $listOfBooks[1]);
-
-            if (isset($quantityBooks[1])) {
-                $this->listOfLoanBooks[$quantityBooks[0]] = intval($quantityBooks[1]);
+            if (isset($quantityBooks[2])) {
+                $this->listOfLoanBooks[$quantityBooks[1]] = intval($quantityBooks[2]);
+                return $this->printLoanBooks();
+            }
+            elseif (isset($quantityBooks[1])) {
+                $this->listOfLoanBooks[$quantityBooks[1]] = 1;
                 return $this->printLoanBooks();
             }
 
-            $this->listOfLoanBooks[$quantityBooks[0]] = 1;
-            return $this->printLoanBooks();
         }
+
         return $this->printLoanBooks();
     }
 
