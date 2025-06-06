@@ -19,52 +19,52 @@ class LibraryTest extends TestCase
      *
      */
 
-    public function receivesZeroBookToLoanReturnsEmptyString()
+    public function receivesNoBookToLoanReturnsEmptyString()
     {
-        $this->assertEquals("", $this->library->operations("prestar:"));
+        $this->assertEquals("", $this->library->operations("prestar"));
     }
 
     /**
      * @test
      *
      */
-    public function receivesOneBookToLoanReturnsBook()
+    public function receivesOneBookToLoanReturnsListOfLoanedBooks()
     {
-        $this->assertEquals("hola x1", $this->library->operations("prestar: hola"));
+        $this->assertEquals("hola x1", $this->library->operations("prestar hola"));
     }
     /**
      * @test
      *
      */
-    public function receivesSameBookTwiceToLoanReturnsBook()
+    public function receivesSameBookTwiceToLoanReturnsListOfLoanedBooks()
     {
-        $this->assertEquals("hola x2", $this->library->operations("prestar: hola 2"));
+        $this->assertEquals("hola x2", $this->library->operations("prestar hola 2"));
     }
     /**
      * @test
      *
      */
-    public function receivesSameBookTwiceInDifferentOperationsToLoanReturnsBook()
+    public function receivesSameBookTwiceInDifferentOperationsToLoanReturnsListOfLoanedBooks()
     {
-        $this->library->operations("prestar: hola 2");
+        $this->library->operations("prestar hola 2");
 
-        $this->assertEquals("hola x3", $this->library->operations("prestar: hola"));
+        $this->assertEquals("hola x3", $this->library->operations("prestar hola"));
     }
     /**
      * @test
      *
      */
-    public function receivesDifferentBookToLoanReturnsBooks()
+    public function receivesDifferentBookToLoanReturnsListOfLoanedBooks()
     {
-        $this->library->operations("prestar: hola 2");
+        $this->library->operations("prestar hola 2");
 
-        $this->assertEquals("hola x2, paco x1", $this->library->operations("prestar: paco"));
+        $this->assertEquals("hola x2, paco x1", $this->library->operations("prestar paco"));
     }
     /**
      * @test
      *
      */
-    public function receivesClearRegisterOperationClearsAllLoanBooks()
+    public function receivesClearRegisterOperationClearsAllLoanedBooks()
     {
         $this->assertEquals("", $this->library->operations("limpiar"));
     }
@@ -73,11 +73,11 @@ class LibraryTest extends TestCase
      * @test
      *
      */
-    public function receivesExistingBookToReturnItClearsFromLoanBooksList()
+    public function receivesExistingBookToReturnItClearsFromLoanedBooksList()
     {
-        $this->library->operations("prestar: hola");
+        $this->library->operations("prestar hola");
 
-        $this->assertEquals("", $this->library->operations("devolver: hola"));
+        $this->assertEquals("", $this->library->operations("devolver hola"));
     }
     /**
      * @test
@@ -85,7 +85,7 @@ class LibraryTest extends TestCase
      */
     public function receivesBookToReturnWhenItIsNotLoanedErrorMessageReturned()
     {
-        $this->assertEquals("El libro indicado no está en préstamo", $this->library->operations("devolver: hola"));
+        $this->assertEquals("El libro indicado no está en préstamo", $this->library->operations("devolver hola"));
     }
     /**
      * @test
@@ -93,19 +93,19 @@ class LibraryTest extends TestCase
      */
     public function receivesLoanedOneBookToReturnItWhenTwoBooksAreLoaned()
     {
-        $this->library->operations("prestar: hola 2");
+        $this->library->operations("prestar hola 2");
 
-        $this->assertEquals("hola x1", $this->library->operations("devolver: hola"));
+        $this->assertEquals("hola x1", $this->library->operations("devolver hola"));
     }
     /**
      * @test
      *
      */
-    public function receivesNoBookToReturnItReturnsListOfLoanBooks()
+    public function receivesNoBookToReturnItReturnsListOfLoanedBooks()
     {
         $this->library->operations("prestar: hola 2");
 
-        $this->assertEquals("hola x2", $this->library->operations("devolver:"));
+        $this->assertEquals("hola x2", $this->library->operations("devolver"));
     }
     /**
      * @test
