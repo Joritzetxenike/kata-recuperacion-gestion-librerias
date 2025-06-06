@@ -26,7 +26,14 @@ class Library
             $this->listOfLoanBooks = [];
             return $this->printLoanBooks();
         }
+        if(str_contains($books,"devolver:")) {
+            $quantityBooks = explode(" ",$books);
+            unset($this->listOfLoanBooks[$quantityBooks[1]]);
 
+            return $this->printLoanBooks();
+
+        }
+        return $this->printLoanBooks();
     }
 
     private function printLoanBooks():string
