@@ -122,4 +122,15 @@ class LibraryTest extends TestCase
 
         $this->assertEquals("hola x2", $response);
     }
+    /**
+     * @test
+     *
+     */
+
+    public function upperCaseTitleIsSameAsLowerCase()
+    {
+        $response =  $this->library->operations("prestar: Hola");
+
+        $this->assertEquals("hola x1", $response);
+    }
 }
