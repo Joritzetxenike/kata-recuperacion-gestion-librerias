@@ -20,4 +20,17 @@ class LibraryTest extends TestCase
         $this->assertEquals("", $response);
     }
 
+    /**
+     * @test
+     *
+     */
+    public function receivesOneBookReturnsBook()
+    {
+        $library = new Library();
+
+        $response = $library->operations("prestar: hola");
+
+        $this->assertEquals("hola x1", $response);
+    }
+
 }
