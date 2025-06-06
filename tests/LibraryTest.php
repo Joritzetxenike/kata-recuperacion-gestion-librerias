@@ -68,6 +68,16 @@ class LibraryTest extends TestCase
 
         $this->assertEquals("hola x2, paco x1", $response);
     }
+    /**
+     * @test
+     *
+     */
+    public function receivesClearRegisterOperationClearsAllLoanBooks()
+    {
+        $response =  $this->library->operations("limpiar");
+
+        $this->assertEquals("", $response);
+    }
 
 
 

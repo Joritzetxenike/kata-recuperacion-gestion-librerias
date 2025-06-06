@@ -22,6 +22,11 @@ class Library
             return $this->printLoanBooks();
         }
 
+        if (str_contains($books,"limpiar")) {
+            $this->listOfLoanBooks = [];
+            return $this->printLoanBooks();
+        }
+
     }
 
     private function printLoanBooks():string
