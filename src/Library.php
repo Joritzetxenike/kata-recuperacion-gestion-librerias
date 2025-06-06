@@ -16,7 +16,7 @@ class Library
         }
 
         if(str_contains($bookListWithOperation,"devolver")) {
-            return $this->deleteFromLoanList($bookListWithOperation);
+            return $this->deleteBookFromLoanList($bookListWithOperation);
         }
         return $this->printLoanBooks();
     }
@@ -65,7 +65,7 @@ class Library
         return $this->printLoanBooks();
     }
 
-    private function deleteFromLoanList(string $bookListWithOperation): string
+    private function deleteBookFromLoanList(string $bookListWithOperation): string
     {
         $bookList = explode(" ",$bookListWithOperation);
 
