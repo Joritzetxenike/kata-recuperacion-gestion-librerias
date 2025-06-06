@@ -11,13 +11,13 @@ class LibraryTest extends TestCase
      * @test
      *
      */
-    public function prueba()
+    public function receivesZeroBookReturnsEmptyString()
     {
-        $nombreClase = new NombreClase();
+        $library = new Library();
 
-        $response = $nombreClase->unoEsUno();
+        $response = $library->operations("prestar:");
 
-        $this->assertEquals(1,$response);
+        $this->assertEquals("", $response);
     }
 
 }

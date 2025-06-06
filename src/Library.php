@@ -4,9 +4,8 @@ namespace Deg540\DockerPHPBoilerplate;
 
 class Library
 {
-
-    public function unoEsUno()
+    public function operations(string $books): string
     {
-        return 1;
+        return "";
     }
 }
